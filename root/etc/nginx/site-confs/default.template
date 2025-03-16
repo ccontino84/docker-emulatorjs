@@ -5,7 +5,8 @@ server {
   client_max_body_size 0;
   add_header Cross-Origin-Opener-Policy same-origin;
   add_header Cross-Origin-Embedder-Policy require-corp;
-  location / {
+  location $SUBFOLDER {
+    rewrite ^$SUBFOLDER(.*)$ /$1 break;
     try_files $uri $uri/ =404;
   }
   location /.env {

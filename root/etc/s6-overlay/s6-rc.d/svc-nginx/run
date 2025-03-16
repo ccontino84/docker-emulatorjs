@@ -5,6 +5,8 @@ if pgrep -f "[n]ginx:" > /dev/null; then
     pkill -ef [n]ginx:
 fi
 
+envsubst '$SUBFOLDER' < /etc/nginx/site-confs/default.template > /etc/nginx/site-confs/default
+
 exec \
     s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z localhost 80" \
         /usr/sbin/nginx -c /etc/nginx/nginx.conf

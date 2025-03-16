@@ -123,6 +123,7 @@ LABEL maintainer="thelamer"
 RUN \
   echo "**** install runtime packages ****" && \
   apk add --no-cache \
+    envsubst \
     file \
     flac \
     kubo \
